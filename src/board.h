@@ -37,4 +37,6 @@ class Board{
     uint8_t castlingRights;
 
     void setPiece(Color color, PieceType pieceType, Square square);
+    void removePiece(Color color, PieceType pieceType, Square square);
+    void movePiece(Color color, PieceType pieceType, Square fromSquare, Square toSquare);
 };
