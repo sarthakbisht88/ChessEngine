@@ -4,8 +4,10 @@
 class Board{
     public:
 
-    void printBoard() const;
     Board();
+    void clearBoard();
+    void printBoard() const;
+    void setStartingPosition();
     uint64_t bitboards[2][6];
 
     enum class Color{
@@ -29,7 +31,7 @@ class Board{
     };
 
     int halfMoveClock=0; // basically - counts and addresses 50-move situation
-    int moveNumber=0;
+    int moveNumber=1;
     Color sideToMove;
     Square enPassantSquare;
     uint8_t castlingRights;
