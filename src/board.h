@@ -5,9 +5,6 @@ class Board{
     public:
 
     Board();
-    void clearBoard();
-    void printBoard() const;
-    void setStartingPosition();
     uint64_t bitboards[2][6];
 
     enum class Color{
@@ -36,7 +33,12 @@ class Board{
     Square enPassantSquare;
     uint8_t castlingRights;
 
+    void clearBoard();
+    void printBoard() const;
+    void setStartingPosition();
+
     void setPiece(Color color, PieceType pieceType, Square square);
     void removePiece(Color color, PieceType pieceType, Square square);
     void movePiece(Color color, PieceType pieceType, Square fromSquare, Square toSquare);
+    bool hasPiece(Color color, PieceType pieceType, Square square) const;
 };

@@ -79,7 +79,7 @@ void Board::setStartingPosition(){
 
     setPiece(Color::Black, PieceType::Rook, Square::A8);
     setPiece(Color::Black, PieceType::Rook, Square::H8);
-    setPiece(Color::Black, PieceType::Knight, Square::B8); 
+    setPiece(Color::Black, PieceType::Knight, Square::B8);
     setPiece(Color::Black, PieceType::Knight, Square::G8);
     setPiece(Color::Black, PieceType::Bishop, Square::C8);    
     setPiece(Color::Black, PieceType::Bishop, Square::F8);
@@ -90,4 +90,17 @@ void Board::setStartingPosition(){
         setPiece(Color::Black, PieceType::Pawn, static_cast<Square>(file+48));    // 48,49,50,51,52,53,54,55
     }
 
+}
+
+void Board::removePiece(Color color, PieceType pieceType, Square square){
+    bitboards[static_cast<int>(color)][static_cast<int>(pieceType)] &= ~(1ULL <<static_cast<int>(square));
+}
+
+void Board::movePiece(Color color, PieceType pieceType, Square fromSquare, Square toSquare){
+    removePiece(color, pieceType, fromSquare);
+    setPiece(color, pieceType, toSquare);
+}
+
+bool Board::hasPiece(Color color, PieceType pieceType, Square square) const{
+    return (bitboards[static_cast<int>(color)][static_cast<int>(pieceType)] & (1ULL << static_cast<int>(square))) != 0;
 }
