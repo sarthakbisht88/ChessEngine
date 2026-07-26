@@ -128,6 +128,30 @@ ChessEngine/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ChessEngine.dir\build.make CMakeFiles/ChessEngine.dir/build
 .PHONY : ChessEngine/fast
 
+src/Attacks.obj: src/Attacks.cpp.obj
+.PHONY : src/Attacks.obj
+
+# target to build an object file
+src/Attacks.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ChessEngine.dir\build.make CMakeFiles/ChessEngine.dir/src/Attacks.cpp.obj
+.PHONY : src/Attacks.cpp.obj
+
+src/Attacks.i: src/Attacks.cpp.i
+.PHONY : src/Attacks.i
+
+# target to preprocess a source file
+src/Attacks.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ChessEngine.dir\build.make CMakeFiles/ChessEngine.dir/src/Attacks.cpp.i
+.PHONY : src/Attacks.cpp.i
+
+src/Attacks.s: src/Attacks.cpp.s
+.PHONY : src/Attacks.s
+
+# target to generate assembly for a file
+src/Attacks.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ChessEngine.dir\build.make CMakeFiles/ChessEngine.dir/src/Attacks.cpp.s
+.PHONY : src/Attacks.cpp.s
+
 src/Board.obj: src/Board.cpp.obj
 .PHONY : src/Board.obj
 
@@ -185,6 +209,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... ChessEngine
+	@echo ... src/Attacks.obj
+	@echo ... src/Attacks.i
+	@echo ... src/Attacks.s
 	@echo ... src/Board.obj
 	@echo ... src/Board.i
 	@echo ... src/Board.s

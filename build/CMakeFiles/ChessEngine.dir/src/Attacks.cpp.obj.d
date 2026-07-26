@@ -1,5 +1,5 @@
-CMakeFiles/ChessEngine.dir/src/main.cpp.obj: \
- C:\Users\bsart\Documents\ChessEngine\src\main.cpp \
+CMakeFiles/ChessEngine.dir/src/Attacks.cpp.obj: \
+ C:\Users\bsart\Documents\ChessEngine\src\Attacks.cpp \
  C:/msys64/ucrt64/include/c++/15.2.0/iostream \
  C:/msys64/ucrt64/include/c++/15.2.0/bits/requires_hosted.h \
  C:/msys64/ucrt64/include/c++/15.2.0/x86_64-w64-mingw32/bits/c++config.h \
@@ -147,8 +147,8 @@ CMakeFiles/ChessEngine.dir/src/main.cpp.obj: \
  C:/msys64/ucrt64/include/c++/15.2.0/bits/ostream.tcc \
  C:/msys64/ucrt64/include/c++/15.2.0/istream \
  C:/msys64/ucrt64/include/c++/15.2.0/bits/istream.tcc \
- C:\Users\bsart\Documents\ChessEngine\src\Board.h \
+ C:\Users\bsart\Documents\ChessEngine\src\Attacks.h \
  C:/msys64/ucrt64/include/c++/15.2.0/cstdint \
  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdint.h \
  C:/msys64/ucrt64/include/stdint.h \
- C:\Users\bsart\Documents\ChessEngine\src\Attacks.h
+ C:\Users\bsart\Documents\ChessEngine\src\Board.h

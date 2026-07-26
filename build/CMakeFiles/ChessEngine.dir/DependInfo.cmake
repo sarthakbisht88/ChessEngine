@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "C:/Users/bsart/Documents/ChessEngine/src/Attacks.cpp" "CMakeFiles/ChessEngine.dir/src/Attacks.cpp.obj" "gcc" "CMakeFiles/ChessEngine.dir/src/Attacks.cpp.obj.d"
   "C:/Users/bsart/Documents/ChessEngine/src/Board.cpp" "CMakeFiles/ChessEngine.dir/src/Board.cpp.obj" "gcc" "CMakeFiles/ChessEngine.dir/src/Board.cpp.obj.d"
   "C:/Users/bsart/Documents/ChessEngine/src/main.cpp" "CMakeFiles/ChessEngine.dir/src/main.cpp.obj" "gcc" "CMakeFiles/ChessEngine.dir/src/main.cpp.obj.d"
   )

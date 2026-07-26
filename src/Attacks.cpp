@@ -19,3 +19,17 @@ uint64_t Attacks::generateKnightAttacks(Board::Square square){
     }
     return bitboardAttacks;
 }
+
+void Attacks::printBitboard(uint64_t bitboard){
+    for(int rank=7; rank>=0; rank--){
+        for(int file=0; file<8; file++){
+            int square=8*rank + file;
+            if((bitboard & (1ULL<<square)) != 0){
+                std::cout << "1 ";
+            }else{
+                std::cout << ". ";
+            }
+        }
+        std::cout << "\n" ;
+    }
+}
