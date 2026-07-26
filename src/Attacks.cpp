@@ -9,7 +9,7 @@ uint64_t Attacks::generateKnightAttacks(Board::Square square){
 
     const int rankOffsets[8]={2,2,1,1,-2,-2,-1,-1};
     const int fileOffsets[8]={1,-1,2,-2,1,-1,2,-2};
-    for(int i=0;i<8;i++){
+    for(int i=0; i<8; i++){
         int newRank=rank+rankOffsets[i];
         int newFile=file+fileOffsets[i];
         if(newRank>=0 && newFile>=0 && newRank<8 && newFile<8){
@@ -32,4 +32,84 @@ void Attacks::printBitboard(uint64_t bitboard){
         }
         std::cout << "\n" ;
     }
+}
+
+uint64_t Attacks::generateKingAttacks(Board::Square square){
+    uint64_t bitboardAttacks=0;
+    int rank=static_cast<int> (square)/8;
+    int file=static_cast<int> (square)%8;
+
+    const int rankOffsets[8]={1,-1,0,0,1,1,-1,-1};
+    const int fileOffsets[8]={0,0,1,-1,1,-1,-1,1};
+    for(int i=0; i<8; i++){
+        int newRank=rank+rankOffsets[i];
+        int newFile=file+fileOffsets[i];
+        if(newRank>=0 && newFile>=0 && newRank<8 && newFile<8){
+            int newSquare=newRank*8+newFile;
+            bitboardAttacks |= (1ULL << newSquare);
+        }
+    }
+    return bitboardAttacks;
+}
+
+uint64_t Attacks::generatePawnAttacks(Board::Color color, Board::Square square){
+    uint64_t bitboardAttacks=0;
+    int rank = static_cast<int>(square)/8;
+    int file = static_cast<int>(square)%8;
+
+    int dir;
+    if(color==Board::Color::White){
+        dir=1;
+    }else{
+        dir=-1;
+    }
+    const int fileOffsets[2]={1, -1};
+    int newRank=rank+dir;
+    for(int i=0; i<2; i++){
+        int newFile=file+fileOffsets[i];
+        int newSquare=newRank*8 + newFile;
+        if(newRank>=0 && newFile>=0 && newRank<8 && newFile<8){
+            bitboardAttacks |= (1ULL << newSquare);
+        }
+    }
+    return bitboardAttacks;
+}
+
+uint64_t Attacks::generatePawnPush(Board::Color color, Board::Square square){
+    uint64_t bitboardAttacks=0;
+    int rank = static_cast<int>(square)/8;
+    int file = static_cast<int>(square)%8;
+    int dir;
+    if(color==Board::Color::White){
+        dir=1;
+    }else{
+        dir=-1;
+    }
+    int newRank=rank+dir;
+    int newSquare=newRank*8 + file;
+    if(newRank>=0 && file>=0 && newRank<8 && file<8){
+        bitboardAttacks |= (1ULL << newSquare);
+    }
+    return bitboardAttacks;
+}
+
+uint64_t Attacks::generatePawnDoublePush(Board::Color color, Board::Square square){
+    uint64_t bitboardAttacks=0;
+    int rank = static_cast<int>(square)/8;
+    int file = static_cast<int>(square)%8;
+    int dir;
+    if(color==Board::Color::White){
+        dir=1;
+    }else{
+        dir=-1;
+    }
+    if(rank!=1 && dir==1 || rank!=6 && dir==-1){
+        return bitboardAttacks;
+    }
+    int newRank=rank+2*dir;
+    int newSquare=newRank*8 + file;
+    if(newRank>=0 && file>=0 && newRank<8 && file<8){
+        bitboardAttacks |= (1ULL << newSquare);
+    }
+    return bitboardAttacks;
 }

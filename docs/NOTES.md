@@ -6,4 +6,5 @@
 5. some terminology is preferred because it goes along with Chess FEN like I wanted to write int fiftyMove=0 but I have to write halfMoveClock
 6. static_cast is used to convert enum to int and 1ULL is basically "1" unsigned long long integer 
 7. CMake acts like a linker, it allows us to run multiple files with 1 command, it is not actual linker though just that it has an executable which can simplify the process of build system.
-8. 
+8. bitboard and bitboardAttacks are different, both are 64 bit board representation but bitboardAttacks is used in attack moves in project.
+9. 

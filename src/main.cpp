@@ -10,7 +10,12 @@ int main(){
     board.setStartingPosition();
     board.printBoard();
 
-    uint64_t attack=Attacks::generateKnightAttacks(Board::Square::B2);
+    // checking knight attacks
+    // uint64_t attack=Attacks::generateKnightAttacks(Board::Square::B2);
+    // Attacks::printBitboard(attack);
+
+    // checking king attacks
+    uint64_t attack=Attacks::generatePawnPush(Board::Color::White, Board::Square::E4);
     Attacks::printBitboard(attack);
     
     std::cout << " -----------------------------\n";
