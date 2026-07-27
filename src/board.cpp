@@ -101,3 +101,23 @@ void Board::movePiece(Color color, PieceType pieceType, Square fromSquare, Squar
 bool Board::hasPiece(Color color, PieceType pieceType, Square square) const{
     return (bitboards[static_cast<int>(color)][static_cast<int>(pieceType)] & (1ULL << static_cast<int>(square))) != 0;
 }
+
+uint64_t Board::getWhiteOccupancy() const{
+    uint64_t occupancyBoard=0;
+    for(int i=0 ; i<6; i++){
+        occupancyBoard |= bitboards[0][i];
+    }
+    return occupancyBoard;
+}
+
+uint64_t Board::getBlackOccupancy() const{
+    uint64_t occupancyBoard=0;
+    for(int i=0 ; i<6; i++){
+        occupancyBoard |= bitboards[1][i];
+    }
+    return occupancyBoard;
+}
+
+uint64_t Board::getOccupancy() const{
+    return getBlackOccupancy() | getWhiteOccupancy();
+}

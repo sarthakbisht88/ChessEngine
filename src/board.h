@@ -42,4 +42,8 @@ class Board{
     void removePiece(Color color, PieceType pieceType, Square square);
     void movePiece(Color color, PieceType pieceType, Square fromSquare, Square toSquare);
     bool hasPiece(Color color, PieceType pieceType, Square square) const;
+
+    uint64_t getWhiteOccupancy() const;
+    uint64_t getBlackOccupancy() const;
+    uint64_t getOccupancy() const;
 };
