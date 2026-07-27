@@ -113,3 +113,56 @@ uint64_t Attacks::generatePawnDoublePush(Board::Color color, Board::Square squar
     }
     return bitboardAttacks;
 }
+
+uint64_t Attacks::generateRookAttacks(Board::Square square){
+    uint64_t bitboardAttacks=0;
+    int rank = static_cast<int>(square)/8;
+    int file = static_cast<int>(square)%8;
+
+    const int rankDir[4]={1, -1, 0, 0};
+    const int fileDir[4]={0, 0, 1, -1};
+    for(int i=0; i<4; i++){
+        int newRank=rank;
+        int newFile=file;
+        while(true){
+            
+            newRank+=rankDir[i];
+            newFile+=fileDir[i];
+            if(newRank<0 || newFile<0 || newRank>7 || newFile>7){
+                break;
+            }
+            int newSquare=8*(newRank) + newFile;
+            bitboardAttacks |= (1ULL << newSquare);
+        }
+    }
+    return bitboardAttacks;
+}
+
+uint64_t Attacks::generateBishopAttacks(Board::Square square){
+    uint64_t bitboardAttacks=0;
+    int rank = static_cast<int>(square)/8;
+    int file = static_cast<int>(square)%8;
+
+    const int rankDir[4]={1, -1, 1, -1};
+    const int fileDir[4]={1, -1, -1, 1};
+
+    for(int i=0; i<4; i++){
+        int newRank=rank;
+        int newFile=file;
+        while(true){
+            
+            newRank+=rankDir[i];
+            newFile+=fileDir[i];
+            if(newRank<0 || newFile<0 || newRank>7 || newFile>7){
+                break;
+            }
+            int newSquare=8*(newRank) + newFile;
+            bitboardAttacks |= (1ULL << newSquare);
+        }
+    }
+    return bitboardAttacks;
+}
+
+uint64_t Attacks::generateQueenAttacks(Board::Square square){
+    return generateBishopAttacks(square) | generateRookAttacks(square);
+}

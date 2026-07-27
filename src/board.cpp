@@ -14,12 +14,10 @@ Board::Board(){
     castlingRights=0;
 }
 
-
 void Board::setPiece(Color color, PieceType pieceType, Square square){
     bitboards[static_cast<int>(color)][static_cast<int>(pieceType)] |= (1ULL << static_cast<int>(square));
     // static_cast is used to convert enum to int and 1ULL is basically "1" unsigned long long integer 
 }
-
 
 void Board::printBoard() const{
     const char notations[2][6]={
@@ -47,7 +45,6 @@ void Board::printBoard() const{
         std::cout << "\n";
     }
 }
-
 
 void Board::clearBoard(){
     for(int i=0; i<2; i++){
