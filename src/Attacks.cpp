@@ -114,11 +114,11 @@ uint64_t Attacks::generatePawnDoublePush(Board::Color color, Board::Square squar
     return bitboardAttacks;
 }
 
-uint64_t Attacks::generateRookAttacks(Board::Square square){
+uint64_t Attacks::generateRookAttacks(Board::Square square, uint64_t friendly, uint64_t enemy){
     uint64_t bitboardAttacks=0;
     int rank = static_cast<int>(square)/8;
     int file = static_cast<int>(square)%8;
-
+    uint64_t occupied=friendly|enemy;
     const int rankDir[4]={1, -1, 0, 0};
     const int fileDir[4]={0, 0, 1, -1};
     for(int i=0; i<4; i++){
@@ -132,17 +132,28 @@ uint64_t Attacks::generateRookAttacks(Board::Square square){
                 break;
             }
             int newSquare=8*(newRank) + newFile;
-            bitboardAttacks |= (1ULL << newSquare);
+            if((occupied & (1ULL << newSquare))==0){
+                bitboardAttacks |= (1ULL << newSquare);
+                continue;
+            }
+            if((friendly & (1ULL << newSquare))!=0){
+                break;
+            }
+            if((enemy & (1ULL << newSquare))!=0){
+                bitboardAttacks |= (1ULL << newSquare);
+                break;
+            }
+            
         }
     }
     return bitboardAttacks;
 }
 
-uint64_t Attacks::generateBishopAttacks(Board::Square square){
+uint64_t Attacks::generateBishopAttacks(Board::Square square, uint64_t friendly, uint64_t enemy){
     uint64_t bitboardAttacks=0;
     int rank = static_cast<int>(square)/8;
     int file = static_cast<int>(square)%8;
-
+    uint64_t occupied=friendly|enemy;
     const int rankDir[4]={1, -1, 1, -1};
     const int fileDir[4]={1, -1, -1, 1};
 
@@ -157,12 +168,22 @@ uint64_t Attacks::generateBishopAttacks(Board::Square square){
                 break;
             }
             int newSquare=8*(newRank) + newFile;
-            bitboardAttacks |= (1ULL << newSquare);
+            if((occupied & (1ULL << newSquare))==0){
+                bitboardAttacks |= (1ULL << newSquare);
+                continue;
+            }
+            if((friendly & (1ULL << newSquare))!=0){
+                break;
+            }
+            if((enemy & (1ULL << newSquare))!=0){
+                bitboardAttacks |= (1ULL << newSquare);
+                break;
+            }
         }
     }
     return bitboardAttacks;
 }
 
-uint64_t Attacks::generateQueenAttacks(Board::Square square){
-    return generateBishopAttacks(square) | generateRookAttacks(square);
+uint64_t Attacks::generateQueenAttacks(Board::Square square, uint64_t friendly, uint64_t enemy){
+    return generateBishopAttacks(square, friendly, enemy) | generateRookAttacks(square, friendly, enemy);
 }

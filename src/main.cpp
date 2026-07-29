@@ -18,13 +18,16 @@ int main(){
     // uint64_t attack=Attacks::generatePawnPush(Board::Color::White, Board::Square::E4);
     // Attacks::printBitboard(attack);
 
-    // checking rook attacks
-    // uint64_t attack=Attacks::generateRookAttacks(Board::Square::E4);
-    // Attacks::printBitboard(attack);
-    
-    // uint64_t attack=Attacks::generateBishopAttacks(Board::Square::E5);
-    // Attacks::printBitboard(attack);
+    uint64_t friendly = (1ULL << 0);
+uint64_t enemy = 0;
 
+uint64_t attacks = Attacks::generateBishopAttacks(
+    static_cast<Board::Square>(0),
+    friendly,
+    enemy
+);
+
+Attacks::printBitboard(attacks);
     // uint64_t attack=Attacks::generateQueenAttacks(Board::Square::G4);
     // Attacks::printBitboard(attack);
     
