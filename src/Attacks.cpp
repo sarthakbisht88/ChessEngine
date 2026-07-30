@@ -2,7 +2,7 @@
 #include "Attacks.h"
 #include "Board.h"
 
-uint64_t Attacks::generateKnightAttacks(Board::Square square){
+uint64_t Attacks::generateKnightAttacks(Board::Square square, uint64_t friendly, uint64_t enemy){
     uint64_t bitboardAttacks=0;
     int rank = static_cast<int>(square)/8;
     int file = static_cast<int>(square)%8;
@@ -14,6 +14,7 @@ uint64_t Attacks::generateKnightAttacks(Board::Square square){
         int newFile=file+fileOffsets[i];
         if(newRank>=0 && newFile>=0 && newRank<8 && newFile<8){
             int newSquare=newRank*8+newFile;
+            if (friendly & (1ULL << newSquare))continue;
             bitboardAttacks |= (1ULL << newSquare);
         }
     }
@@ -34,7 +35,7 @@ void Attacks::printBitboard(uint64_t bitboard){
     }
 }
 
-uint64_t Attacks::generateKingAttacks(Board::Square square){
+uint64_t Attacks::generateKingAttacks(Board::Square square, uint64_t friendly, uint64_t enemy){
     uint64_t bitboardAttacks=0;
     int rank=static_cast<int> (square)/8;
     int file=static_cast<int> (square)%8;
@@ -46,13 +47,14 @@ uint64_t Attacks::generateKingAttacks(Board::Square square){
         int newFile=file+fileOffsets[i];
         if(newRank>=0 && newFile>=0 && newRank<8 && newFile<8){
             int newSquare=newRank*8+newFile;
+            if (friendly & (1ULL << newSquare))continue;
             bitboardAttacks |= (1ULL << newSquare);
         }
     }
     return bitboardAttacks;
 }
 
-uint64_t Attacks::generatePawnAttacks(Board::Color color, Board::Square square){
+uint64_t Attacks::generatePawnAttacks(Board::Color color, Board::Square square, uint64_t enemy){
     uint64_t bitboardAttacks=0;
     int rank = static_cast<int>(square)/8;
     int file = static_cast<int>(square)%8;
@@ -69,13 +71,14 @@ uint64_t Attacks::generatePawnAttacks(Board::Color color, Board::Square square){
         int newFile=file+fileOffsets[i];
         int newSquare=newRank*8 + newFile;
         if(newRank>=0 && newFile>=0 && newRank<8 && newFile<8){
+            if(enemy & (1ULL << newSquare))
             bitboardAttacks |= (1ULL << newSquare);
         }
     }
     return bitboardAttacks;
 }
 
-uint64_t Attacks::generatePawnPush(Board::Color color, Board::Square square){
+uint64_t Attacks::generatePawnPush(Board::Color color, Board::Square square, uint64_t occupied){
     uint64_t bitboardAttacks=0;
     int rank = static_cast<int>(square)/8;
     int file = static_cast<int>(square)%8;
@@ -88,12 +91,12 @@ uint64_t Attacks::generatePawnPush(Board::Color color, Board::Square square){
     int newRank=rank+dir;
     int newSquare=newRank*8 + file;
     if(newRank>=0 && file>=0 && newRank<8 && file<8){
-        bitboardAttacks |= (1ULL << newSquare);
+        if(!occupied &(1ULL << newSquare)) bitboardAttacks |= (1ULL << newSquare);
     }
     return bitboardAttacks;
 }
 
-uint64_t Attacks::generatePawnDoublePush(Board::Color color, Board::Square square){
+uint64_t Attacks::generatePawnDoublePush(Board::Color color, Board::Square square, uint64_t occupied){
     uint64_t bitboardAttacks=0;
     int rank = static_cast<int>(square)/8;
     int file = static_cast<int>(square)%8;
@@ -109,7 +112,7 @@ uint64_t Attacks::generatePawnDoublePush(Board::Color color, Board::Square squar
     int newRank=rank+2*dir;
     int newSquare=newRank*8 + file;
     if(newRank>=0 && file>=0 && newRank<8 && file<8){
-        bitboardAttacks |= (1ULL << newSquare);
+        if(!occupied & (1ULL << newSquare)) bitboardAttacks |= (1ULL << newSquare);
     }
     return bitboardAttacks;
 }

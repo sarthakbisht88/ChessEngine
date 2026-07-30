@@ -11,6 +11,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/bsart/Documents/ChessEngine/src/Attacks.cpp" "CMakeFiles/ChessEngine.dir/src/Attacks.cpp.obj" "gcc" "CMakeFiles/ChessEngine.dir/src/Attacks.cpp.obj.d"
   "C:/Users/bsart/Documents/ChessEngine/src/Board.cpp" "CMakeFiles/ChessEngine.dir/src/Board.cpp.obj" "gcc" "CMakeFiles/ChessEngine.dir/src/Board.cpp.obj.d"
   "C:/Users/bsart/Documents/ChessEngine/src/main.cpp" "CMakeFiles/ChessEngine.dir/src/main.cpp.obj" "gcc" "CMakeFiles/ChessEngine.dir/src/main.cpp.obj.d"
+  "C:/Users/bsart/Documents/ChessEngine/src/moveGen.cpp" "CMakeFiles/ChessEngine.dir/src/moveGen.cpp.obj" "gcc" "CMakeFiles/ChessEngine.dir/src/moveGen.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

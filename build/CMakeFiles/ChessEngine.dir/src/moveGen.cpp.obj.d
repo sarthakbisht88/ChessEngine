@@ -1,5 +1,5 @@
-CMakeFiles/ChessEngine.dir/src/main.cpp.obj: \
- C:\Users\bsart\Documents\ChessEngine\src\main.cpp \
+CMakeFiles/ChessEngine.dir/src/moveGen.cpp.obj: \
+ C:\Users\bsart\Documents\ChessEngine\src\moveGen.cpp \
  C:/msys64/ucrt64/include/c++/15.2.0/iostream \
  C:/msys64/ucrt64/include/c++/15.2.0/bits/requires_hosted.h \
  C:/msys64/ucrt64/include/c++/15.2.0/x86_64-w64-mingw32/bits/c++config.h \
@@ -147,15 +147,15 @@ CMakeFiles/ChessEngine.dir/src/main.cpp.obj: \
  C:/msys64/ucrt64/include/c++/15.2.0/bits/ostream.tcc \
  C:/msys64/ucrt64/include/c++/15.2.0/istream \
  C:/msys64/ucrt64/include/c++/15.2.0/bits/istream.tcc \
+ C:\Users\bsart\Documents\ChessEngine\src\move.h \
+ C:\Users\bsart\Documents\ChessEngine\src\board.h \
+ C:/msys64/ucrt64/include/c++/15.2.0/cstdint \
+ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdint.h \
+ C:/msys64/ucrt64/include/stdint.h \
+ C:\Users\bsart\Documents\ChessEngine\src\moveGen.h \
  C:/msys64/ucrt64/include/c++/15.2.0/vector \
  C:/msys64/ucrt64/include/c++/15.2.0/bits/stl_uninitialized.h \
  C:/msys64/ucrt64/include/c++/15.2.0/bits/stl_vector.h \
  C:/msys64/ucrt64/include/c++/15.2.0/bits/stl_bvector.h \
  C:/msys64/ucrt64/include/c++/15.2.0/bits/vector.tcc \
- C:\Users\bsart\Documents\ChessEngine\src\Board.h \
- C:/msys64/ucrt64/include/c++/15.2.0/cstdint \
- C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdint.h \
- C:/msys64/ucrt64/include/stdint.h \
- C:\Users\bsart\Documents\ChessEngine\src\Attacks.h \
- C:\Users\bsart\Documents\ChessEngine\src\Move.h \
- C:\Users\bsart\Documents\ChessEngine\src\moveGen.h
+ C:\Users\bsart\Documents\ChessEngine\src\Attacks.h

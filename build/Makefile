@@ -200,6 +200,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ChessEngine.dir\build.make CMakeFiles/ChessEngine.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/moveGen.obj: src/moveGen.cpp.obj
+.PHONY : src/moveGen.obj
+
+# target to build an object file
+src/moveGen.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ChessEngine.dir\build.make CMakeFiles/ChessEngine.dir/src/moveGen.cpp.obj
+.PHONY : src/moveGen.cpp.obj
+
+src/moveGen.i: src/moveGen.cpp.i
+.PHONY : src/moveGen.i
+
+# target to preprocess a source file
+src/moveGen.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ChessEngine.dir\build.make CMakeFiles/ChessEngine.dir/src/moveGen.cpp.i
+.PHONY : src/moveGen.cpp.i
+
+src/moveGen.s: src/moveGen.cpp.s
+.PHONY : src/moveGen.s
+
+# target to generate assembly for a file
+src/moveGen.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ChessEngine.dir\build.make CMakeFiles/ChessEngine.dir/src/moveGen.cpp.s
+.PHONY : src/moveGen.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -218,6 +242,9 @@ help:
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s
+	@echo ... src/moveGen.obj
+	@echo ... src/moveGen.i
+	@echo ... src/moveGen.s
 .PHONY : help
 
 

@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/ChessEngine.dir/src/Board.cpp.obj.d"
   "CMakeFiles/ChessEngine.dir/src/main.cpp.obj"
   "CMakeFiles/ChessEngine.dir/src/main.cpp.obj.d"
+  "CMakeFiles/ChessEngine.dir/src/moveGen.cpp.obj"
+  "CMakeFiles/ChessEngine.dir/src/moveGen.cpp.obj.d"
   "ChessEngine.exe"
   "ChessEngine.exe.manifest"
   "ChessEngine.pdb"

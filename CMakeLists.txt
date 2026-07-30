@@ -9,4 +9,5 @@ add_executable(ChessEngine
     src/main.cpp
     src/Board.cpp
     src/Attacks.cpp
+    src/moveGen.cpp
 )
