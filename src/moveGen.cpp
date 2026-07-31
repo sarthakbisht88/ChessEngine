@@ -1,4 +1,4 @@
-#include<iostream>
+#include <iostream>
 #include "move.h"
 #include "moveGen.h"
 #include "Attacks.h"
@@ -21,7 +21,6 @@ void moveGen::generateKnightMoves(const Board &board, Board::Square square, std:
             m.from=square;
             m.to=static_cast<Board::Square>(i);
             m.piece=Board::PieceType::Knight;
-            m.capture=true;
             moves.push_back(m);
         }
     }
@@ -45,7 +44,6 @@ void moveGen::generateKingMoves(const Board &board, Board::Square square, std::v
             m.from=square;
             m.to=static_cast<Board::Square>(i);
             m.piece=Board::PieceType::King;
-            m.capture=true;
             moves.push_back(m);
         }
     }
@@ -69,7 +67,6 @@ void moveGen::generateRookMoves(const Board &board, Board::Square square, std::v
             m.from=square;
             m.to=static_cast<Board::Square>(i);
             m.piece=Board::PieceType::Rook;
-            m.capture=true;
             moves.push_back(m);
         }
     }
@@ -93,7 +90,6 @@ void moveGen::generateBishopMoves(const Board &board, Board::Square square, std:
             m.from=square;
             m.to=static_cast<Board::Square>(i);
             m.piece=Board::PieceType::Bishop;
-            m.capture=true;
             moves.push_back(m);
         }
     }
@@ -117,8 +113,37 @@ void moveGen::generateQueenMoves(const Board &board, Board::Square square, std::
             m.from=square;
             m.to=static_cast<Board::Square>(i);
             m.piece=Board::PieceType::Queen;
-            m.capture=true;
             moves.push_back(m);
+        }
+    }
+}
+
+void moveGen::generatePawnMoves(const Board &board, Board::Square square, std::vector<Move> &moves){
+    uint64_t friendly;
+    uint64_t enemy;
+    
+    if(board.sideToMove==Board::Color::White){
+        friendly=board.getWhiteOccupancy();
+        enemy=board.getBlackOccupancy();
+    }else{
+        friendly=board.getBlackOccupancy();
+        enemy=board.getWhiteOccupancy();
+    }
+    uint64_t occupied=friendly|enemy;
+    uint64_t singlePush=Attacks::generatePawnPush(board.sideToMove, square, occupied);
+    uint64_t doublePush=Attacks::generatePawnDoublePush(board.sideToMove, square, occupied);
+    uint64_t captures=Attacks::generatePawnAttacks(board.sideToMove, square, enemy);
+    
+    uint64_t moveBoard=singlePush|doublePush|captures;
+    for(int i=0; i<64; i++){
+        if((moveBoard & (1ULL << i))!=0){
+            Move m;
+            m.from=square;
+            m.to=static_cast<Board::Square>(i);
+            m.piece=Board::PieceType::Pawn;
+            m.capture=(captures & (1ULL << i)) != 0;
+            moves.push_back(m);
+
         }
     }
 }

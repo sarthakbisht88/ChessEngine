@@ -1,4 +1,4 @@
-#include<iostream>
+#include <iostream>
 #include "Attacks.h"
 #include "Board.h"
 
@@ -91,7 +91,9 @@ uint64_t Attacks::generatePawnPush(Board::Color color, Board::Square square, uin
     int newRank=rank+dir;
     int newSquare=newRank*8 + file;
     if(newRank>=0 && file>=0 && newRank<8 && file<8){
-        if(!occupied &(1ULL << newSquare)) bitboardAttacks |= (1ULL << newSquare);
+        if((occupied & (1ULL << newSquare)) == 0){
+            bitboardAttacks |= (1ULL << newSquare);
+        }
     }
     return bitboardAttacks;
 }
@@ -109,10 +111,18 @@ uint64_t Attacks::generatePawnDoublePush(Board::Color color, Board::Square squar
     if(rank!=1 && dir==1 || rank!=6 && dir==-1){
         return bitboardAttacks;
     }
+
+    uint64_t oneStep = generatePawnPush(color, square, occupied);
+    if(oneStep == 0){
+        return bitboardAttacks;
+    }
+
     int newRank=rank+2*dir;
     int newSquare=newRank*8 + file;
     if(newRank>=0 && file>=0 && newRank<8 && file<8){
-        if(!occupied & (1ULL << newSquare)) bitboardAttacks |= (1ULL << newSquare);
+        if((occupied & (1ULL << newSquare)) == 0){ 
+            bitboardAttacks |= (1ULL << newSquare);
+        }
     }
     return bitboardAttacks;
 }
