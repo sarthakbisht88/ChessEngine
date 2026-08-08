@@ -31,7 +31,12 @@ class Board{
     int moveNumber=1;
     Color sideToMove;
     Square enPassantSquare;
+
     uint8_t castlingRights;
+    const uint8_t WhiteKingside = 1 << 0;
+    const uint8_t WhiteQueenside = 1 << 1;
+    const uint8_t BlackKingside = 1 << 2;
+    const uint8_t BlackQueenside = 1 << 3;
 
     void clearBoard();
     void printBoard() const;

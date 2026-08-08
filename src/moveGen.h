@@ -13,4 +13,6 @@ namespace moveGen{
     void generateRookMoves(const Board &board, Board::Square square, std::vector<Move> &move);
     void generateBishopMoves(const Board &board, Board::Square square, std::vector<Move> &move);
     void generateQueenMoves(const Board &board, Board::Square square, std::vector<Move> &move);
+
+    void generateCastleMoves(const Board &board, Board::Square square, std::vector<Move> &move);
 }

@@ -5,6 +5,7 @@ struct Move{
     Board::Square from;
     Board::Square to;
     Board::PieceType piece;
+    Board::PieceType promotionPiece;
 
     bool capture = false;
     bool promotion = false;

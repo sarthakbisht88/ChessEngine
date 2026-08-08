@@ -69,6 +69,7 @@ void Board::setStartingPosition(){
     setPiece(Color::White, PieceType::Bishop, Square::F1);
     setPiece(Color::White, PieceType::Queen, Square::D1);   
     setPiece(Color::White, PieceType::King, Square::E1);
+    castlingRights |= WhiteKingside | WhiteQueenside | BlackKingside | BlackQueenside;
 
     for(int file=0; file<8; file++){    // NOTE: because file maintains horizontal lines (2nd rank)
         setPiece(Color::White, PieceType::Pawn, static_cast<Square>(file+8));    // 8,9,10,11,12,13,14,15
